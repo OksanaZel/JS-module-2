@@ -423,12 +423,20 @@
 //которые присутствуют в обоих исходных массивах.
 
 function getCommonElements(array1, array2) {
-  const newArray = [];
+  const concatArray = array1.concat(array2);
+  let sameElement = concatArray[0];
+  console.log(sameElement);
+  let newArray = [];
 
-  // for (let i = 0; i < )
-
-   console.log(array1.includes(array2));
-  // console.log(newArray);
+  for (let i = 1; i < concatArray.length; i += 1){
+    // console.log(concatArray[i]);
+    if (sameElement === concatArray[i]) {
+      sameElement = concatArray[i]
+      console.log(sameElement);
+    }
+  }
+  
+    return newArray;
 }
 
 console.log(getCommonElements([1, 2, 3], [2, 4]));
