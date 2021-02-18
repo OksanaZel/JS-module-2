@@ -562,13 +562,13 @@
 //использовать метод массив.includes(значение).
 
 function includes(array, value) {
-  let result = false;
+  // let result = false;
   for (const number of array) {
     if (number === value) {
-      result = true
+      return true
     }
   }
-    return result;
+    return false;
   }
 
 
