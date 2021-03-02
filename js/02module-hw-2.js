@@ -31,8 +31,8 @@
 //Если isLoginUnique вернет true, addLogin добавляет новый 
 //логин в logins и возвращает строку 'Логин успешно добавлен!'
 
-function isLoginValid(login, min = 4, max = 16) {
-        if (login.length >= min && login.length <= max) {
+function isLoginValid(login) {
+        if (login.length >= 4 && login.length <= 16) {
             return true;
         }
         return false;
@@ -50,17 +50,16 @@ function addLogin (allLogins, login) {
   const REFUSAL = 'Такой логин уже используется!';
   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
     let message;
-    return isLoginValid();
-//     if (isLoginValid()) {
-//         if (isLoginUnique()) {
-//             allLogins.push(login);
-//             message = SUCCESS;
-//         } else {
-//             message = REFUSAL;
-//         }
-//     message = ERROR
-//   }
-//   return message
+    if (isLoginValid(login)) {
+        if (isLoginUnique(allLogins, login)) {
+            allLogins.push(login);
+            message = SUCCESS;
+        } else {
+            message = REFUSAL;
+        }
+    message = ERROR
+  }
+  return message
 }
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
