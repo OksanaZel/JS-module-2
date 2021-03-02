@@ -31,8 +31,8 @@
 //Если isLoginUnique вернет true, addLogin добавляет новый 
 //логин в logins и возвращает строку 'Логин успешно добавлен!'
 
-function isLoginValid(login) {
-        if (login.length >= 4 && login.length <= 16) {
+function isLoginValid(login, min = 4, max = 16) {
+        if (login.length >= min && login.length <= max) {
             return true;
         }
         return false;
@@ -45,27 +45,30 @@ function isLoginUnique (allLogins, login) {
   return false;
 }
 
-function addLogin (allLogins, login) {
+function addLogin(allLogins, login) {
   const SUCCESS = 'Логин успешно добавлен!';
   const REFUSAL = 'Такой логин уже используется!';
   const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
-    let message;
-    if (isLoginValid(login)) {
-        if (isLoginUnique(allLogins, login)) {
-            allLogins.push(login);
-            message = SUCCESS;
-        } else {
-            message = REFUSAL;
-        }
-    message = ERROR
+  let message;
+  if (isLoginValid) {
+    message = SUCCESS;
+    // if (isLoginUnique) {
+    //   allLogins.push(login);
+    //   message = SUCCESS;
+    // } else {
+    //   message = REFUSAL;
+    // }
+    // //   message = ERROR;
+    // // }
+    // return message;
   }
-  return message
+  // return message = ERROR;
 }
 
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 
-// console.log(addLogin(logins, 'Ajax')); 
-// 'Логин успешно добавлен!'
+console.log(addLogin(logins, 'Ajax')); 
+'Логин успешно добавлен!'
 
 // console.log(addLogin(logins, 'robotGoogles')); 
 // 'Такой логин уже используется!'
@@ -73,6 +76,6 @@ const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 // console.log(addLogin(logins, 'Zod'));
 // 'Ошибка! Логин должен быть от 4 до 16 символов'
 
-console.log(addLogin(logins, 'jqueryisextremelyfast')); 
-'Ошибка! Логин должен быть от 4 до 16 символов' 
+// console.log(addLogin(logins, 'jqueryisextremelyfast')); 
+// 'Ошибка! Логин должен быть от 4 до 16 символов' 
 
