@@ -340,9 +340,9 @@
 //произвольную строку состоящую только из слов разделённых 
 //пробелом(параметр string) и возвращает самое длинное слово в этой строке.
 
-// function findLongestWord(string) {
+// function findLongestWord(string = "") {
 //   const splitString = string.split(' ');
-//   console.log(splitString);
+//   // console.log(splitString);
 //   let longestWord = splitString[0];
   
 //   for (let i = 1; i < splitString.length; i += 1){
