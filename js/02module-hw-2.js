@@ -1,119 +1,85 @@
-// 1.Есть массив logins с логинами пользователей. Напиши 
-//скрипт добавления логина в массив logins.Добавляемый логин 
-//должен:
-//проходить проверку на длину от 4 до 16-ти символов 
-//включительно быть уникален, то есть отсутствовать в массиве 
-//logins
-//Разбей задачу на подзадачи с помощью функций.
-//Проверку на отсутствие аргументов или на правильный тип 
-//аргументов делать не нужно.
-//Напиши функцию isLoginValid(login), в которой проверь 
-//количество символов параметра login и верни true или false 
-//в зависимости от того, попадает ли длина параметра в заданный 
-//диапазон от 4 - х до 16 - ти символов включительно.
-//Напиши функцию isLoginUnique(allLogins, login), которая 
-//принимает список всех логинов и добавляемый логин как 
-//параметры и проверяет наличие login в массиве allLogins, 
-//возвращая true если такого логина еще нет и false если логин 
-//уже используется.
-//Напиши функцию addLogin(allLogins, login) которая:
-//Принимает новый логин и массив всех логинов как параметры
-//Проверяет валидность логина используя вспомогательную функцию 
-//isLoginValid
-//Если логин не валиден, прекратить исполнение функции addLogin 
-//и вернуть строку 'Ошибка! Логин должен быть от 4 до 16 
-//символов'
-//Если логин валиден, функция addLogin проверяет уникальность 
-//логина с помощью функции isLoginUnique
-//Если isLoginUnique вернет false, тогда addLogin не добавляет 
-//логин в массив и возвращает строку 'Такой логин уже 
-//используется!'
-//Если isLoginUnique вернет true, addLogin добавляет новый 
-//логин в logins и возвращает строку 'Логин успешно добавлен!'
+/*1.Использование for
+Напиши функцию getItemsString(array), которая получает массив и возвращает строку, 
+полученную из объединения (конкатенации) строк в формате 
+${номер элемента} - ${значение элемента}\n , где \n - спецсимвол переноса.
+Нумерация должна начинаться с 1. К примеру для первого элемента массива ['Mango', 'Poly', 'Ajax'] 
+с индексом 0 будет выведено '1 - Mango', а для индекса 2 выведет '3 - Ajax'.
+Используйте вспомогательную переменную result для добавления (конкатенации) 
+строк внутри цикла for */
 
-function isLoginValid (login, min = 4, max = 16) {
-  return login.length >= min && login.length <= max;
-}
-
-function isLoginUnique (allLogins, login) {
-  return allLogins.includes(login);
-}
-
-function addLogin(allLogins, login) {
-  const SUCCESS = 'Логин успешно добавлен!';
-  const REFUSAL = 'Такой логин уже используется!';
-  const ERROR = 'Ошибка! Логин должен быть размером от 4 до 16 символов';
-  let message = ERROR;
-  for (const log of allLogins) {
-    // console.log(login);
-    const valid = isLoginValid(log);
-    const unique = isLoginUnique(log)
-    if (valid) {
-      if (unique) {
-        message = SUCCESS;
-      }
-        message = REFUSAL;  
-    }
-    return message;
-  }
-// 
-//   if (!isLoginValid(login)) {
-//     message = ERROR;
-//   } else if (!isLoginUnique(login)) {
-//     allLogins.push(login);
-//     message = REFUSAL;
-//   } else {
-//     message = SUCCESS;
+// const getItemsString = function(array) {
+//   //'use strict';
+//   // Write code under this line
+//   let result = '';
+//   for (let i = 0; i < array.length; i += 1) {
+//     const el = `${i+1} - ${array[i]}\n`;
+//     result += el;
 //   }
-  return message;
+//   return result;
+  
+// };
+
+// console.log(getItemsString(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']));
+/*
+'1 - Mango
+2 - Poly
+3 - Ajax
+4 - Lux
+5 - Jay
+6 - Kong
+'
+*/
+
+//console.log(getItemsString([5, 10, 15]));
+/*
+'1 - 5
+2 - 10
+3 - 15
+'
+*/
+
+/*2. Подсчет стоимости гравировки украшений
+Напиши скрипт подсчета стоимости гравировки украшений. Для этого создай функцию 
+calculateEngravingPrice(message = "", pricePerWord = 0) принимающую строку 
+(в строке будут только слова и пробелы) и цену гравировки одного слова, и 
+возвращающую цену гравировки всех слов в строке.
+Для решения этой задачи не используйте циклы. Т.е. никаких for, while, 
+do while, for of, for in, forEach или функциональных методов. */
+
+// const calculateEngravingPrice = (message = "", pricePerWord = 0) => pricePerWord * message.split(' ').length; // Write code in this line
+
+// console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes mus', 10)); // 80
+
+//console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes mus', 20)); // 160
+
+//console.log(calculateEngravingPrice('Donec orci lectus aliquam est magnis', 40)); // 240
+
+//console.log(calculateEngravingPrice('Donec orci lectus aliquam est magnis', 20)); // 120
+
+//console.log(calculateEngravingPrice('Uno', 100)); // 100
+
+/*3. Поиск самого длинного слово в строке с пробелами
+Напиши функцию findLongestWord(string = ""), которая принимает параметром произвольную 
+строку (в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке. */
+
+function findLongestWord (string = "") {
+  // Write code under this line
+  const words = string.split(' ');
+  let longestWord = words[0];
+  for (let i = 0; i < words.length; i =+1) {
+    if (words[i].length > longestWord.length) {
+      longestWord = words[i];
+      console.log(longestWord);
+    }
+  }
+  return longestWord;
 }
 
+console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
+// 'jumped'
 
-const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
+//console.log(findLongestWord('Google do a roll'));
+// 'Google'
 
-// console.log(addLogin(logins, 'Ajax')); 
-// 'Логин успешно добавлен!
-
-// console.log(addLogin(logins, 'robotGoogles')); 
-// 'Такой логин уже используется!'
-
-// console.log(addLogin(logins, 'Zod'));
-// 'Ошибка! Логин должен быть от 4 до 16 символов'
-
-// console.log(addLogin(logins, 'jqueryisextremelyfast')); 
-// 'Ошибка! Логин должен быть от 4 до 16 символов' 
-
-const filter = function (array, test) {
-    const filteredArray = [];
-
-    for (const el of array) {
-        console.log(el);
-        const passed = test(el);
-
-        if (passed) {
-            filteredArray.push(el);
-        }
-    }
-
-    return filteredArray;
-};
-
-// 1. надо передать функцию
-// 2. функция получает элемент массива
-// 3. если элемент массива удовлетворяет условию то функция вернет true
-// 3. если элемент массива НЕ удовлетворяет условию то функция вернет false
-
-// const callback1 = function (value) {
-//     return value >= 3;
-// };
-
-// const r1 = filter([1, 2, 3, 4, 5], callback1);
-// console.log(r1);
-
-// const callback2 = function (value) {
-//     return value <= 4;
-// };
-
-// const r2 = filter([1, 2, 3, 4, 5, 6, 7, 8], callback2);
-// console.log(r2);
-
+//console.log(findLongestWord('May the force be with you'));
+// 'force'
